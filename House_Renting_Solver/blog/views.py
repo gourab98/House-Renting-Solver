@@ -13,6 +13,12 @@ posts = [
         'location': 'Gopalganj',
         'content': 'Family House',
         'date_posted': '31 December,2020'
+    },
+    {
+        'owner': 'Md. Habib',
+        'location': 'BBaria',
+        'content': 'Ladies Hostel',
+        'date_posted': '1 December,2021'
     }
 ]
 
@@ -24,4 +30,4 @@ def home(request):
 
 
 def about(request):
-    return render (request, 'blog/about.html')
+    return render (request, 'blog/about.html', {'title': 'About'})
