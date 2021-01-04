@@ -12,7 +12,7 @@
 
 -->
              <a class="mr-2" href="#">{{ post.owner}}</a>
-             <small class="text-muted">{{ post.date_posted }}</small>
+             <small class="text-muted">{{ post.date_posted | date:"d F, Y" }}</small>
            </div>
            <h2><a class="article-title" href="#">{{ post.content }}</a></h2>
            <p class="article-content">{{ post.location }}</p>
