@@ -11,8 +11,9 @@
        <h1>{{ post.content }}</h1>
        <h2>Location: {{post.location}}</h2>
        <p>By {{post.owner}} on {{post.date_posted}}</p><br>
+
 -->
-             <a class="mr-2" href="#">{{ post.owner}}</a>
+             <a class="mr-2" href="#">{{ post.owner }}</a>
              <small class="text-muted">{{ post.date_posted | date:"d F, Y" }}</small>
            </div>
            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.content }}</a></h2>
