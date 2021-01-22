@@ -15,9 +15,10 @@
 -->
              <a class="mr-2" href="{% url 'user-posts' post.owner.username %}">{{ post.owner }}</a>
              <small class="text-muted">{{ post.date_posted | date:"d F, Y" }}</small>
+
            </div>
+           <p class="article-content"><b>Location: </b>{{ post.location }}</p>
            <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.content }}</a></h2>
-           <p class="article-content">{{ post.location }}</p>
          </div>
        </article>
 
