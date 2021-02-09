@@ -1,0 +1,32 @@
+
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+    <div class="card text-dark bg-light">
+      <div class="card-header" aligne="center"><h4> Create Your Post </h4></div>
+        <div class="card-body">
+
+          <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <br>
+            <button type="submit">Upload</button>
+          </form>
+
+        </div>
+    </div>
+
+    
+
+    {% if img_obj %}
+    <h3>Succesfully </h3>
+    <h2>{{ img_obj.get_house_type_display }}</h2>
+    <img src="{{ img_obj.bed_room_image.url}}" alt="connect" style="max-height:300px">
+    <br>
+    <br>
+    <img src="{{ img_obj.drawing_room_image.url}}" alt="connect" style="max-height:300px">
+    {% endif %} 
+
+{% endblock content %}

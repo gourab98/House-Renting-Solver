@@ -1,27 +1,23 @@
 {% extends "blog/base.html" %}
 {% block content %}
-    <h1 class="mb-3">Posts by {{view.kwargs.username}} ({{ page_obj.paginator.count}})</h1>
-   {% for post in posts %}
+    <h4 class="mb-3">Posts by {{view.kwargs.username}}</h4>
+    <h5> {{view.kwargs.username}}'s Total Post = {{ page_obj.paginator.count}} </h5>
+   {% for post in post3s %}
+
    <article class="media content-section">
      <img class="rounded-circle article-img" src="{{ post.owner.profile.image.url}}" >
 
-     <div class="media-body">
-       <div class="article-metadata">
+            <div class="media-body">
+                  <div class="article-metadata">
 
-  <!-- Previous
-       <h1>{{ post.content }}</h1>
-       <h2>Location: {{post.location}}</h2>
-       <p>By {{post.owner}} on {{post.date_posted}}</p><br>
+                    <a class="mr-2" href="{% url 'user-profile' post.owner.username %}">{{ post.owner }}</a>
+                    <small class="text-muted">{{ post.date_posted | date:"d F, Y" }}</small>
+                  </div>
 
--->
-             <a class="mr-2" href="{% url 'user-posts' post.owner.username %}">{{ post.owner }}</a>
-             <small class="text-muted">{{ post.date_posted | date:"d F, Y" }}</small>
-           </div>
-           <p class="article-content"><b>Location: </b>{{ post.location }}</p>
-           <h2><a class="article-title" href="{% url 'post-detail' post.id %}">{{ post.content }}</a></h2>
 
-         </div>
-       </article>
+               <h5><a class="article-title" href="{% url 'post-detail' post.id %}">House Type: {{ post.get_house_type_display }}<br> Location: {{ post.address }} </a></h5>
+            </div>
+     </article>
 
    {% endfor %}
    {% if is_paginated %}

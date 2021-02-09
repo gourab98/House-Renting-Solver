@@ -1,0 +1,248 @@
+{% extends "blog/base.html" %}
+{% block content %}
+    <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ object.owner.profile.image.url}}" >
+        <div class="media-body">
+          <div class="article-metadata">
+                <div>
+                    <a class="mr-2" href="{% url 'user-profile' object.owner.username %}">{{object.owner }}</a>
+                    <small class="text-muted">{{ object.date_posted|date:"D d M Y"}} {{ object.date_posted|time:"P"}}</small>
+                </div>
+
+                <div>
+                    <h2>Requirements By the Owner: </h2>
+
+                     <!--   house_type','renter_preference','family_member','religion_preference','occupation_priority',
+                       'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
+                       'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
+                       'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions'
+                     -->
+                        <table>
+                          <tr>
+                            <th> House Type:</th>
+                            <th> {{ object.get_house_type_display }} </th>
+                          </tr>
+                          <tr>
+                           <th> Renter Preference :</th>
+                           <th> {{ object.get_renter_preference_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Family Member :</th>
+                           <th> {{ object.get_family_member_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Religion Preference :</th>
+                           <th> {{ object.get_religion_preference_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Occupation Priority :</th>
+                           <th> {{ object.get_occupation_priority_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Address :</th>
+                           <th> {{ object.address }} </th>
+                         </tr>
+                         <tr>
+                           <th> Floor No :</th>
+                           <th> {{ object.get_floor_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Bed Room :</th>
+                           <th> {{ object.get_bed_room_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Drawing Room :</th>
+                           <th> {{ object.get_drawing_room_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Dinning Room :</th>
+                           <th> {{ object.get_dinning_room_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Kitchen :</th>
+                           <th> {{ object.get_kitchen_display }} </th>
+                         </tr>
+                         <tr>
+                           <th> Bath Room :</th>
+                           <th> {{ object.get_bathroom_display }} </th>
+                         </tr>
+                        </table>
+                        <br>
+                        <hr>
+
+                        <h4> Facilities: </h3>
+                            <!--   house_type','renter_preference','family_member','religion_preference','occupation_priority',
+                         'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
+                         'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
+                         'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions'
+                      -->
+                           <table>
+                             <tr>
+                               <th> Washing Machine :</th>
+                               <th> {{ object.get_washing_Machine_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Hot Water :</th>
+                               <th> {{ object.get_hot_water_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> IPS :</th>
+                               <th> {{ object.get_IPS_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Generator :</th>
+                               <th> {{ object.get_Generator_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Oven :</th>
+                               <th> {{ object.get_Oven_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Belcony :</th>
+                               <th> {{ object.get_Belcony_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Lift :</th>
+                               <th> {{ object.get_lift_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Refrigerator :</th>
+                               <th> {{ object.get_refrigerator_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Sofa :</th>
+                               <th> {{ object.get_sofa_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Wifi :</th>
+                               <th> {{ object.get_wifi_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> AC :</th>
+                               <th> {{ object.get_ac_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Television :</th>
+                               <th> {{ object.get_television_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Gas :</th>
+                               <th> {{ object.get_gas_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Security :</th>
+                               <th> {{ object.get_security_display }} </th>
+                             </tr>
+                             <tr>
+                               <th> Parking :</th>
+                               <th> {{ object.get_parking_display }} </th>
+                             </tr>
+                           </table>
+                           <hr>
+                           <h4>Bills:</h4>
+                           <table>
+                             <tr>
+                               <th> House Rent :</th>
+                               <th> {{ object.house_rent }} </th>
+                             </tr>
+                             <tr>
+             
+                               <th> Electricity Rent :</th>
+                               <th> {{ object.electricity_rent }} </th>
+                             </tr>
+                             <tr>
+                               <th> Gas Rent :</th>
+                               <th> {{ object.gas_rent }} </th>
+                             </tr>
+                             <tr>
+                               <th> Water Rent :</th>
+                               <th> {{ object.water_rent }} </th>
+                             </tr>
+                             <tr>
+                               <th> Service Rent :</th>
+                               <th> {{ object.service_rent }} </th>
+                             </tr>
+                             <tr>
+                               <th>  Rent Date :</th>
+                               <th> {{ object.rent_date }} </th>
+                             </tr>
+                             <tr>
+                               <th>  Special Announcement :</th>
+                               <th> {{ object.any_special_instructions }} </th>
+                             </tr>
+                           </table>
+                </div>
+                <hr>
+                <br>
+                <h5> Contact Number : {{ object.owner.register.phone }}</h5> 
+                <hr>
+                <h4> All Images: </h4>
+                <hr>
+                <div>
+                   {% if object.bed_room_image %}
+                   <strong>Bed Room </strong>
+                   <img src="{{ object.bed_room_image.url}}" width="300" height="250" >
+                   <hr>
+                   {% endif %}
+                </div>               
+                <br>
+               
+                <div>
+                   {% if object.drawing_room_image %}
+                   <strong>Drawing Room </strong>
+                   <img src="{{ object.drawing_room_image.url}}" >
+                   <hr>
+                   {% endif %}
+                  
+                </div> 
+                <br>
+     
+                <div>
+                 {% if object.dinning_room_image %}
+                 <strong>Dinning Room </strong>
+                 <img src="{{ object.dinning_room_image.url}}" > 
+                 <hr>
+                 {% endif %}
+                 
+                </div>
+                
+                <br>
+                
+                <div>
+                 {% if object.kitchen_room_image %}
+                 <strong>Kitchen </strong>
+                 <img src="{{ object.kitchen_room_image.url}}" >
+                 <hr>
+                 {% endif %}
+                 <hr>
+                </div>
+                
+                
+                <br>
+     
+                <div>
+                 {% if object.bath_room_image %}
+                 <strong>Bath Room </strong>
+                 <img src="{{ object.bath_room_image.url}}" >
+                 <hr>
+                 {% endif %}
+                 
+
+                </div>
+                
+                <br>
+
+                
+                <div>
+                    {% if object.owner == user %}
+                        <div>
+                        <a class="btn btn-secondary btn-sm mt-1 mb-1" href="{% url 'post-update' object.id %}">Update</a>
+                        <a class="btn btn-danger btn-sm mt-1 mb-1" href="{% url 'post-delete' object.id %}">Delete</a>
+                        </div>
+                    {% endif %}
+                </div>
+                
+            </div>
+        </div>
+    </article>
+{% endblock content %}

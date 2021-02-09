@@ -1,0 +1,120 @@
+{% extends "blog/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<!-- 'occupation','address','gender','phone','religion','marital_status','nid' -->
+{% for post in register %}
+
+<p>{{ post.user.username }}</p>
+
+  
+      <div class="content-section">
+        <div class="media">
+          <img class="rounded-circle account-img" src="{{post.user.profile.image.url}}">
+            <h2 class="account-heading">{{post.user.username }}</h2>
+
+              <fieldset class="form-group">
+                <legend class = "border-bottom mb-4">Profile Information</legend>
+                
+            </fieldset>
+              <div class="media-body">
+                <!--
+                <div>
+                 <strong> <h5> Name : {{ user.first_name }} {{ user.last_name }}</h5> </strong> 
+                </div>
+                <div>
+                  <strong> <h5> E-mail : {{ user.email }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Occupation : {{ post.occupation }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Address : {{ post.address }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Gender : {{ post.get_gender_display }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Contact : {{ post.phone }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Religion : {{ post.religion }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> Marital Status : {{ post.get_marital_status_display }}</h5> </strong> 
+                 </div>
+                 <div>
+                  <strong> <h5> National Id : {{ post.nid }}</h5> </strong> 
+                 </div>
+
+                 <form>
+                  <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <input type="email" class="form-control" value="{{ user.email }}">
+                    <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                  </div>
+                 </form> -->
+
+                 <form class="row g-3">
+
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label"> <strong> Name </strong></label>
+                    <input type="email" class="form-control" id="inputEmail4" value = "{{ post.user.first_name }} {{ post.user.last_name }}">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="inputEmail4" class="form-label">Email</label>
+                    <input type="email" class="form-control" id="inputEmail4" value = "{{ post.user.email }}">
+                  </div>
+
+  
+                  <div class="col-12">
+                    <label for="inputAddress" class="form-label">Address</label>
+                    <input type="text" class="form-control" id="inputAddress" value="{{post.address}}">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="inputAddress" class="form-label">Occupation</label>
+                    <input type="text" class="form-control" id="inputAddress" value="{{post.occupation}}">
+                  </div>
+
+                  <div class="col-12">
+                    <label for="inputAddress2" class="form-label">Contact Number </label>
+                    <input type="text" class="form-control" id="inputAddress2" value = "{{ post.phone }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputCity" class="form-label"> Gender </label>
+                    <input type="text" class="form-control" id="inputCity" value="{{ post.get_gender_display }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputState" class="form-label">Religion</label>
+                    <input type="text" class="form-control" id="inputCity" value="{{ post.religion }}">
+                  </div>
+
+                  <div class="col-md-6">
+                    <label for="inputCity" class="form-label"> Marital Status  </label>
+                    <input type="text" class="form-control" id="inputCity" value="{{ post.get_marital_status_display }}">
+                  </div>
+                  <div class="col-md-6">
+                    <label for="inputState" class="form-label">National Id </label>
+                    <input type="text" class="form-control" id="inputCity" value="{{ post.nid }}">
+                  </div>
+                </form>
+                <br>
+                
+
+                <div class = "form-group">
+                  <button class = "btn btn-outline-info" type="submit"> <a class="mr-2" href="{% url 'user-posts' post.user.username %}">All Posts</a> </button>
+              </div>
+
+              </div>
+        </div>
+      </div>
+  
+
+{% endfor %}
+
+
+
+{% endblock content %}
