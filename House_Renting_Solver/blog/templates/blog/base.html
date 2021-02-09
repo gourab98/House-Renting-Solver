@@ -11,12 +11,12 @@
    <!-- Bootstrap CSS -->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
 
-   <link rel="stylesheet" type="text/css" href="{% static 'blog/main.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'blog/main1.css' %}"> 
 
   {% if title %}
   <title> Blog Section- {{ title }} </title>
   {% else %}
-  <title> Blog </title>
+  <title> Aria </title>
   {% endif %}
 
 </head>
@@ -25,15 +25,12 @@
   <header class="site-header">
     <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
       <div class="container">
-        <a class="navbar-brand mr-4" href="{% url 'blog-home' %}">House Renting Solver</a>
+       
+        <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><h2> Aria </h2> </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarToggle">
-          <div class="navbar-nav mr-auto">
-            <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-            <a class="nav-item nav-link" href="{% url 'blog-about'  %}">About</a>
-          </div>
           <!-- Navbar Right Side -->
           <div class="navbar-nav navbar-right" >
             {% if user.is_authenticated %}
@@ -64,15 +61,13 @@
       </div>
       <div class="col-md-4">
         <div class="content-section">
-          <h3>Notice:</h3>
-          <p class='text-muted'>You must include those information while giving rent.
-            <ul class="list-group">
-              <li class="list-group-item list-group-item-light">Exact location of the renting place</li>
-              <li class="list-group-item list-group-item-light">Starting renting month</li>
-              <li class="list-group-item list-group-item-light">Renting Place full details</li>
-              <li class="list-group-item list-group-item-light">Renting Price</li>
-            </ul>
-          </p>
+           <h3>Find your destiny</h3>
+            <p class='text-muted'>Search By location:
+                <form class="d-flex">
+                  <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search">
+                  <button class="btn btn-outline-success" type="submit">Search</button>
+                </form>
+            </p>
         </div>
       </div>
     </div>

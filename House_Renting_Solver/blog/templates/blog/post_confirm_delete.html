@@ -1,6 +1,8 @@
 {% extends "blog/base.html" %}
 {% block content %}
 
+   <p>{{ object.id }}</p>
+   
     <div class="content-section">
         <form method="POST">
           {% csrf_token %}

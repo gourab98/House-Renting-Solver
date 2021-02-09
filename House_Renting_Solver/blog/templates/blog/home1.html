@@ -1,0 +1,251 @@
+{% extends "blog/base.html" %}
+{% block content %}
+   {% for post in post3s %}
+   <article class="media content-section">
+     <img class="rounded-circle article-img" src="{{ post.owner.profile.image.url}}" >
+     <div class="media-body">
+         <div class="article-metadata">
+             <a class="mr-2" href="{% url 'user-profile' post.owner.username %}">{{ post.owner }}</a>
+             <small class="text-muted">{{ post.date_posted|date:"D d M Y"}} {{ post.date_posted|time:"P"}}</small>
+          </div>
+           <div>
+             
+             <h3>Requirements By the Owner: </h3>
+
+                    <!--   house_type','renter_preference','family_member','religion_preference','occupation_priority',
+                        'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
+                        'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
+                        'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions'
+                    -->
+             <table>
+               <tr>
+                 <th> House Type:</th>
+                 <th> {{ post.get_house_type_display }} </th>
+               </tr>
+               <tr>
+                <th> Renter Preference :</th>
+                <th> {{ post.get_renter_preference_display }} </th>
+              </tr>
+              <tr>
+                <th> Family Member :</th>
+                <th> {{ post.get_family_member_display }} </th>
+              </tr>
+              <tr>
+                <th> Religion Preference :</th>
+                <th> {{ post.get_religion_preference_display }} </th>
+              </tr>
+              <tr>
+                <th> Occupation Priority :</th>
+                <th> {{ post.get_occupation_priority_display }} </th>
+              </tr>
+              <tr>
+                <th> Address :</th>
+                <th> {{ post.address }} </th>
+              </tr>
+              <tr>
+                <th> Floor No :</th>
+                <th> {{ post.get_floor_display }} </th>
+              </tr>
+              <tr>
+                <th> Bed Room :</th>
+                <th> {{ post.get_bed_room_display }} </th>
+              </tr>
+              <tr>
+                <th> Drawing Room :</th>
+                <th> {{ post.get_drawing_room_display }} </th>
+              </tr>
+              <tr>
+                <th> Dinning Room :</th>
+                <th> {{ post.get_dinning_room_display }} </th>
+              </tr>
+              <tr>
+                <th> Kitchen :</th>
+                <th> {{ post.get_kitchen_display }} </th>
+              </tr>
+              <tr>
+                <th> Bath Room :</th>
+                <th> {{ post.get_bathroom_display }} </th>
+              </tr>
+             </table>
+             <br>
+             <hr>
+
+             <div class="article-content" > 
+              <h6>For more details :  <a href = "{%url 'post-detail' post.id %}"> See More </a> </h6>
+            </div>
+
+            <!--
+             <h4> Facilities: </h3> -->
+               <!--   house_type','renter_preference','family_member','religion_preference','occupation_priority',
+            'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
+            'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
+            'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions'
+               -->
+
+               <!--
+              <table>
+                <tr>
+                  <th> Washing Machine :</th>
+                  <th> {{ post.get_washing_Machine_display }} </th>
+                </tr>
+                <tr>
+                  <th> Hot Water :</th>
+                  <th> {{ post.get_hot_water_display }} </th>
+                </tr>
+                <tr>
+                  <th> IPS :</th>
+                  <th> {{ post.get_IPS_display }} </th>
+                </tr>
+                <tr>
+                  <th> Generator :</th>
+                  <th> {{ post.get_Generator_display }} </th>
+                </tr>
+                <tr>
+                  <th> Oven :</th>
+                  <th> {{ post.get_Oven_display }} </th>
+                </tr>
+                <tr>
+                  <th> Belcony :</th>
+                  <th> {{ post.get_Belcony_display }} </th>
+                </tr>
+                <tr>
+                  <th> Lift :</th>
+                  <th> {{ post.get_lift_display }} </th>
+                </tr>
+                <tr>
+                  <th> Refrigerator :</th>
+                  <th> {{ post.get_refrigerator_display }} </th>
+                </tr>
+                <tr>
+                  <th> Sofa :</th>
+                  <th> {{ post.get_sofa_display }} </th>
+                </tr>
+                <tr>
+                  <th> Wifi :</th>
+                  <th> {{ post.get_wifi_display }} </th>
+                </tr>
+                <tr>
+                  <th> AC :</th>
+                  <th> {{ post.get_ac_display }} </th>
+                </tr>
+                <tr>
+                  <th> Television :</th>
+                  <th> {{ post.get_television_display }} </th>
+                </tr>
+                <tr>
+                  <th> Gas :</th>
+                  <th> {{ post.get_gas_display }} </th>
+                </tr>
+                <tr>
+                  <th> Security :</th>
+                  <th> {{ post.get_security_display }} </th>
+                </tr>
+                <tr>
+                  <th> Parking :</th>
+                  <th> {{ post.get_parking_display }} </th>
+                </tr>
+              </table>
+              <hr>
+              <h4>Bills:</h4>
+              <table>
+                <tr>
+                  <th> House Rent :</th>
+                  <th> {{ post.house_rent }} </th>
+                </tr>
+                <tr>
+
+                  <th> Electricity Rent :</th>
+                  <th> {{ post.electricity_rent }} </th>
+                </tr>
+                <tr>
+                  <th> Gas Rent :</th>
+                  <th> {{ post.gas_rent }} </th>
+                </tr>
+                <tr>
+                  <th> Water Rent :</th>
+                  <th> {{ post.water_rent }} </th>
+                </tr>
+                <tr>
+                  <th> Service Rent :</th>
+                  <th> {{ post.service_rent }} </th>
+                </tr>
+                <tr>
+                  <th>  Rent Date :</th>
+                  <th> {{ post.rent_date }} </th>
+                </tr>
+                <tr>
+                  <th>  Special Announcement :</th>
+                  <th> {{ post.any_special_instructions }} </th>
+                </tr>
+              </table> -->
+           </div>
+           <!--
+           <hr>
+           <br>
+           <h4> All Images: </h4>
+           <div>
+              {% if post.bed_room_image %}
+              <strong>Bed Room </strong>
+              <img src="{{ post.bed_room_image.url}}" >
+              {% endif %}
+           </div>
+           <hr>
+           <br>
+          
+           <div>
+              {% if post.drawing_room_image %}
+              <strong>Drawing Room </strong>
+              <img src="{{ post.drawing_room_image.url}}" >
+              {% endif %}
+           </div>
+           <hr>
+           <br>
+
+           <div>
+            {% if post.dinning_room_image %}
+            <strong>Dinning Room </strong>
+            <img src="{{ post.dinning_room_image.url}}" >
+            {% endif %}
+           </div>
+           <hr>
+           <br>
+           
+           <div>
+            {% if post.kitchen_room_image %}
+            <strong>Kitchen </strong>
+            <img src="{{ post.kitchen_room_image.url}}" >
+            {% endif %}
+           </div>
+           <hr>
+           
+           <br>
+
+           <div>
+            {% if post.bath_room_image %}
+            <strong>Bath Room </strong>
+            <img src="{{ post.bath_room_image.url}}" >
+            {% endif %}
+           </div>  
+         </div> -->
+     </article>
+
+   {% endfor %}
+   
+   <div class="pagination">
+    <span class="step-links">
+        {% if page_obj.has_previous %}          
+            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+          {{ page_obj.number }}
+        </span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+  </div>
+
+
+{% endblock content %}
