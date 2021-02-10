@@ -113,7 +113,7 @@ def about(request):
         'post3s' : Post3.objects.all()
     }
 
-    return render(request, 'blog/home.html', context)
+    return render(request, 'blog/about.html', context)
 
 @login_required
 def PostCreate(request):
