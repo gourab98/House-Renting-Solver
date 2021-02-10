@@ -1,11 +1,15 @@
 {% extends "blog/base.html" %}
 {% block content %}
-   {% for post in post3s %}
+      
+    
+
+   {% for post in page_obj %}
+
    <article class="media content-section">
      <img class="rounded-circle article-img" src="{{ post.owner.profile.image.url}}" >
      <div class="media-body">
          <div class="article-metadata">
-             <a class="mr-2" href="{% url 'user-profile' post.owner.username %}">{{ post.owner }}</a>
+             <a class="mr-2" href="{% url 'user-profile' post.owner.username %}">{{ post.owner }}</a> 
              <small class="text-muted">{{ post.date_posted|date:"D d M Y"}} {{ post.date_posted|time:"P"}}</small>
           </div>
            <div>
@@ -16,7 +20,8 @@
                         'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
                         'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
                         'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions'
-                    -->
+                    --> 
+            
              <table>
                <tr>
                  <th> House Type:</th>
@@ -227,25 +232,27 @@
             {% endif %}
            </div>  
          </div> -->
-     </article>
+     </article> 
 
    {% endfor %}
    
+    
    <div class="pagination">
-    <span class="step-links">
-        {% if page_obj.has_previous %}          
-            <a href="?page={{ page_obj.previous_page_number }}">previous</a>
-        {% endif %}
+       <span class="step-links">
+          {% if page_obj.has_previous %}
+              <a href="?page=1">&laquo;&nbsp; first &nbsp;</a>
+              <a href="?page={{ page_obj.previous_page_number }}">&nbsp;previous &nbsp;</a> 
+          {% endif %}
 
-        <span class="current">
-          {{ page_obj.number }}
-        </span>
+          <span class="current">
+              Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+          </span>
 
-        {% if page_obj.has_next %}
-            <a href="?page={{ page_obj.next_page_number }}">next</a>
-        {% endif %}
-    </span>
-  </div>
-
+          {% if page_obj.has_next %}
+              <a href="?page={{ page_obj.next_page_number }}">&nbsp;next &nbsp;</a>
+              <a href="?page={{ page_obj.paginator.num_pages }}">&nbsp;last &raquo;&nbsp;</a>
+          {% endif %}
+       </span>
+   </div>
 
 {% endblock content %}

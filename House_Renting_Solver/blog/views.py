@@ -15,24 +15,42 @@ from .models import Post,Post1,Post3
 from .forms import CreatePostForm
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from users.models import Register
-    
+
+
+    #if 'q' in request.GET:
+        #q = request.GET['q']
+        #context = {
+            #'post3s' : Post3.objects.filter(address__icontains=q).order_by('-date_posted')
+        #}
+    #else:
+        #context = {
+        #'post3s' : Post3.objects.all().order_by('-date_posted')
+    #}
 
 def home(request):
     return render(request,'blog/home.html',{})
 
 
-def PostList(request):
+def PostList1(request):
     if 'q' in request.GET:
         q = request.GET['q']
-        context = {
-            'post3s' : Post3.objects.filter(address__icontains=q).order_by('-date_posted')
-        }
+        objects = Post3.objects.filter(address__icontains=q).order_by('-date_posted')
     else:
-        context = {
-        'post3s' : Post3.objects.all().order_by('-date_posted')
-    }
+        objects = Post3.objects.all().order_by('-date_posted')
+    paginator = Paginator(objects,4)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    return render(request,'blog/home1.html',{'page_obj':page_obj})
 
-    return render(request, 'blog/home1.html', context)
+
+def PostList(request):
+    post_list = Post3.objects.all().order_by('-date_posted')
+    paginator = Paginator(post_list,2)
+    page = request.GET.get('page')
+    post3s = paginator.get_page(page)
+
+    return render(request, 'blog/home1.html',{'post3s':post_list})
+
 
 class UserPostListView(ListView):
     model = Post3
@@ -64,8 +82,6 @@ class PostCreateView(LoginRequiredMixin, CreateView):
     form_class = CreatePostForm
     model = Post1
 
-   
-    
     def form_valid(self, form):
         post1 = form.save(commit=False)
         form.instance.owner = self.request.user
@@ -79,7 +95,7 @@ class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
             'address','floor','bed_room','bed_room_image','drawing_room','drawing_room_image','dinning_room','dinning_room_image','kitchen',
             'kitchen_room_image','bathroom','bath_room_image','washing_Machine','hot_water','IPS','Generator','Belcony','Oven','lift','refrigerator','sofa','wifi','ac','television','gas','security',
             'parking','house_rent','electricity_rent','gas_rent','water_rent','service_rent','rent_date','any_special_instructions']
-    
+
     def form_valid(self, form):
         form.instance.owner = self.request.user
         return super().form_valid(form)
@@ -125,9 +141,7 @@ def PostCreate(request):
             post1.save()
             img_obj = form.instance
             messages.success(request, f'Your post has been created')
-            return redirect('blog-home') 
+            return redirect('blog-home')
     else:
         form = CreatePostForm()
-    return render(request,'blog/index.html',{'form':form})     
-
-
+    return render(request,'blog/index.html',{'form':form})
