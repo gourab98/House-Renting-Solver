@@ -22,7 +22,7 @@ Using Python Framework(Django) at backend, SQLite as database with HTML, CSS, Ja
    
 ***   
 ### Database setup:
-By default we are using SQLite.For using any other relational database please install the package of that database
+By default we are using SQLite. For using any other relational database please install the package of that database
 for django and change the database dependency on `settings.py`.
 
 ***
