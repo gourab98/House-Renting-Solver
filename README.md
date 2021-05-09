@@ -20,10 +20,12 @@ Using Python Framework(Django) at backend, SQLite as database with HTML, CSS, Ja
  * Open command line in project base dir and install all dependency
    > `pip install -r requirements.txt`
    
+***   
 ### Database setup:
 By default we are using SQLite.For using any other relational database please install the package of that database
 for django and change the database dependency on `settings.py`.
 
+***
 ### Some django keyword:
 * To migrations the model:
   > `python manage.py makemigrations [app_name]`
