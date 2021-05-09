@@ -1,9 +1,5 @@
-# House-Renting-Solver (Aria)
-
 <h1 align="center">
-
-Aria
-
+House-Renting-Solver (Aria)
 </h1>
 
 ***
