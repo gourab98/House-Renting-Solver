@@ -9,7 +9,9 @@ Using Python Framework(Django) at backend, SQLite as database with HTML, CSS, Ja
 
 ### Requirements:
  * #### [Python 3.8 or up](https://www.python.org/downloads/release/python-372/)
- * #### Database : SQLite
+ * #### [Django 3.2.2](https://www.djangoproject.com/) 
+ * #### Database : [SQLite](https://www.sqlite.org/index.html/)
+ 
 
 
 ***
