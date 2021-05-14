@@ -36,6 +36,5 @@ for django and change the database dependency on `settings.py`.
 * To run the project in localhost:
   > `python manage.py runserver`
 
-***
 
 
