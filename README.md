@@ -36,5 +36,16 @@ for django and change the database dependency on `settings.py`.
 * To run the project in localhost:
   > `python manage.py runserver`
 
+
 ***
+### Having problems !?
+Sometimes you may find problems running this applications on your system. If the problem is similar, trying this:
+
+## (ModuleNotFoundError: No module named 'crispy_forms')
+* Installing crispy_forms: 
+  > `pip3 install --user django-crispy-forms`
+  
+## (ModuleNotFoundError: No module named 'PIL')  
+* Upgrading Pillow:
+  > `pip3 install --upgrade Pillow`
 
